@@ -1,2 +1,2 @@
 # hangman
-my first version of the game hangman
+my own version of the game hangman
