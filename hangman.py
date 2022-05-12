@@ -152,7 +152,7 @@ while True:
     # Game not active -> human made 7 mistakes
     else:
         print('\n\n----------------------------------------\n'
-              'GAME OVER DOLL\nYOU LOSE.')
+              'GAME OVER\nYOU LOSE.')
         break
         
 # show results
