@@ -225,7 +225,7 @@ while True:
             
             # already guess -> rule out
             if human_guess in already_guess:
-                print(f'You have already guess {human_guess}')
+                print(f'You have already guess {human_guess.upper()}')
                 # print word user have guess
                 print('\nYour guess: ', end='')
                 for w in already_guess:
