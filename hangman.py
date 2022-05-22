@@ -52,7 +52,7 @@ hangmanresults = [''''
 =========''']
 
 # the user guess
-human_incorrect = []
+already_guess = []
 human_correct = []
 visual_board = []
 human_incorrect_count = 0
@@ -224,19 +224,19 @@ while True:
                 continue
             
             # already guess -> rule out
-            if human_guess in human_incorrect or human_guess in human_correct:
+            if human_guess in already_guess:
                 print(f'You have already guess {human_guess}')
                 # print word user have guess
                 print('\nYour guess: ', end='')
-                for w in human_correct:
+                for w in already_guess:
                     print(w.upper(), end=' ')
             
             # acceptable guess -> correct or incorrect
             else:
-                # incorrect -> hangman
+                # incorrect -> hangman, put the guess into the already_guess
                 if human_guess not in hangman_word:
-                    human_incorrect += human_guess
                     print(f'\nIncorrect! There is no {human_guess} in the word!')
+                    already_guess.append(human_guess)
                     
                     # hangman
                     print(hangmanresults[human_incorrect_count])
@@ -258,9 +258,10 @@ while True:
                     for v in visual_board:
                         print(v.upper(), end=' ')
                     
-                    # remove the word from the word_to_guess, put the guess into the human correct
+                    # remove the word from the word_to_guess, put the guess into the human correct & already_guess
                     word_to_guess.remove(human_guess)
                     human_correct.append(human_guess)
+                    already_guess.append(human_guess)
         
         else:
             print('\n\n----------------------------------------\n'
