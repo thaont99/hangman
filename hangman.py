@@ -54,153 +54,119 @@ hangmanresults = [''''
 # the user guess
 already_guess = []
 human_correct = []
-visual_board = []
 human_incorrect_count = 0
+alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 # hangman words to guess
-hangman_dictionary = {'answer': 'school', 'arithmetic': 'school', 'assignment': 'school', 'atlas': 'school', 'backpack': 'school',
-                      'ballpoint pen': 'school', 'binder': 'school', 'blackboard': 'school', 'book': 'school', 'bookcase': 'school',
-                      'bookmark': 'school', 'calculator': 'school', 'calendar': 'school', 'chalk': 'school', 'classroom': 'school',
-                      'compass': 'school', 'computer': 'school', 'crayons': 'school', 'desk': 'school', 'dictionary': 'school', 'dividers': 'school',
-                      'easel': 'school', 'encyclopedia': 'school', 'English': 'school', 'eraser': 'school', 'exam': 'school', 'examination': 'school',
-                      'experiment': 'school', 'folder': 'school', 'geography': 'school', 'globe': 'school', 'glossary': 'school', 'glue': 'school',
-                      'grades': 'school', 'gym': 'school', 'highlighter': 'school', 'history': 'school', 'homework': 'school', 'ink': 'school',
-                      'intelligent': 'school', 'keyboard': 'school', 'language': 'school', 'learn': 'school', 'lesson': 'school', 'library': 'school',
-                      'lunch ': 'school', 'markers': 'school', 'math': 'school', 'mathematics': 'school', 'memorize': 'school', 'paper': 'school',
-                      'paste': 'school', 'pen': 'school', 'pencil': 'school', 'printer': 'school', 'project': 'school', 'protractor': 'school',
-                      'pupil': 'school', 'question': 'school', 'quiz': 'school', 'reading': 'school', 'recess': 'school', 'rubber': 'school',
-                      'ruler': 'school', 'science': 'school', 'scissors': 'school', 'sharpener': 'school', 'smart': 'school', 'stapler': 'school',
-                      'student': 'school', 'tape': 'school', 'teacher': 'school', 'test': 'school', 'thesaurus': 'school', 'think': 'school',
-                      'vocabulary': 'school', 'watercolors': 'school', 'whiteboard': 'school', 'yardstick': 'school', 'map': 'school',
-                      'writing': 'school', 'adoption': 'family', 'ancestor': 'family', 'aunt': 'family', 'bachelor': 'family', 'bride': 'family',
-                      'bridegroom': 'family', 'brother': 'family', 'brotherhood': 'family', 'brotherly': 'family', 'child': 'family',
-                      'childhood': 'family', 'children': 'family', 'clan': 'family', 'connection': 'family', 'cousin': 'family', 'dad': 'family',
-                      'daddy': 'family', 'daughter': 'family', 'descendant': 'family', 'devoted': 'family', 'divorce': 'family', 'eligible': 'family',
-                      'engaged': 'family', 'engagement': 'family', 'estranged': 'family', 'accountant': 'Office, Business, Workplace',
-                      'accounting': 'Office, Business, Workplace', 'accounts': 'Office, Business, Workplace',
-                      'accruals': 'Office, Business, Workplace', 'ads': 'Office, Business, Workplace', 'advertise': 'Office, Business, Workplace',
-                      'affordable': 'Office, Business, Workplace', 'agenda': 'Office, Business, Workplace',
-                      'agreement': 'Office, Business, Workplace', 'arbitration': 'Office, Business, Workplace',
-                      'benefits': 'Office, Business, Workplace', 'board': 'Office, Business, Workplace', 'bond': 'Office, Business, Workplace',
-                      'bonus': 'Office, Business, Workplace', 'bookkeeping': 'Office, Business, Workplace', 'borrow': 'Office, Business, Workplace',
-                      'boss': 'Office, Business, Workplace', 'briefcase': 'Office, Business, Workplace', 'budget': 'Office, Business, Workplace',
-                      'business': 'Office, Business, Workplace', 'buy': 'Office, Business, Workplace', 'buyer': 'Office, Business, Workplace',
-                      'calculate': 'Office, Business, Workplace', 'capital': 'Office, Business, Workplace',
-                      'capitalist': 'Office, Business, Workplace', 'career': 'Office, Business, Workplace', 'cargo': 'Office, Business, Workplace',
-                      'chairman': 'Office, Business, Workplace', 'chairwoman': 'Office, Business, Workplace', 'charge': 'Office, Business, Workplace',
-                      'clause': 'Office, Business, Workplace', 'client': 'Office, Business, Workplace', 'close': 'Office, Business, Workplace',
-                      'collateral': 'Office, Business, Workplace', 'commerce': 'Office, Business, Workplace',
-                      'commercial': 'Office, Business, Workplace', 'commission': 'Office, Business, Workplace',
-                      'commodity': 'Office, Business, Workplace', 'company': 'Office, Business, Workplace',
-                      'competition': 'Office, Business, Workplace', 'compromise': 'Office, Business, Workplace',
-                      'consumer': 'Office, Business, Workplace', 'contract': 'Office, Business, Workplace',
-                      'copyright': 'Office, Business, Workplace', 'corporate': 'Office, Business, Workplace',
-                      'corporation': 'Office, Business, Workplace', 'cost': 'Office, Business, Workplace', 'coupon': 'Office, Business, Workplace',
-                      'credit': 'Office, Business, Workplace', 'cubicle': 'Office, Business, Workplace', 'currency': 'Office, Business, Workplace',
-                      'customer': 'Office, Business, Workplace', 'database': 'Office, Business, Workplace', 'deadline': 'Office, Business, Workplace',
-                      'deal': 'Office, Business, Workplace', 'debit': 'Office, Business, Workplace', 'deflation': 'Office, Business, Workplace',
-                      'demand': 'Office, Business, Workplace', 'department': 'Office, Business, Workplace', 'director': 'Office, Business, Workplace',
-                      'discount': 'Office, Business, Workplace', 'dismiss': 'Office, Business, Workplace',
-                      'distribution': 'Office, Business, Workplace', 'diversify': 'Office, Business, Workplace',
-                      'dividend': 'Office, Business, Workplace', 'download': 'Office, Business, Workplace', 'duties': 'Office, Business, Workplace',
-                      'duty': 'Office, Business, Workplace', 'economical': 'Office, Business, Workplace', 'economics': 'Office, Business, Workplace',
-                      'efficiency': 'Office, Business, Workplace', 'employ': 'Office, Business, Workplace', 'employee': 'Office, Business, Workplace',
-                      'employer': 'Office, Business, Workplace', 'employment': 'Office, Business, Workplace',
-                      'entrepreneur': 'Office, Business, Workplace', 'equipment': 'Office, Business, Workplace',
-                      'estimate': 'Office, Business, Workplace', 'executive': 'Office, Business, Workplace',
-                      'expenses': 'Office, Business, Workplace', 'export': 'Office, Business, Workplace', 'facility': 'Office, Business, Workplace',
-                      'factory': 'Office, Business, Workplace', 'fax': 'Office, Business, Workplace', 'figures': 'Office, Business, Workplace',
-                      'finance': 'Office, Business, Workplace', 'financial': 'Office, Business, Workplace', 'fire': 'Office, Business, Workplace',
-                      'foreman': 'Office, Business, Workplace', 'framework': 'Office, Business, Workplace', 'freight': 'Office, Business, Workplace',
-                      'fund': 'Office, Business, Workplace', 'goods': 'Office, Business, Workplace', 'graph': 'Office, Business, Workplace',
-                      'gross': 'Office, Business, Workplace', 'growth': 'Office, Business, Workplace', 'guidebook': 'Office, Business, Workplace',
-                      'headhunter': 'Office, Business, Workplace', 'headquarters': 'Office, Business, Workplace',
-                      'high': 'Office, Business, Workplace', 'hire': 'Office, Business, Workplace', 'hours': 'Office, Business, Workplace',
-                      'import': 'Office, Business, Workplace', 'incentive': 'Office, Business, Workplace', 'income': 'Office, Business, Workplace',
-                      'inflation': 'Office, Business, Workplace', 'insurance': 'Office, Business, Workplace', 'intern': 'Office, Business, Workplace',
-                      'interview': 'Office, Business, Workplace', 'inventory': 'Office, Business, Workplace', 'invest': 'Office, Business, Workplace',
-                      'investment': 'Office, Business, Workplace', 'invoice': 'Office, Business, Workplace', 'job': 'Office, Business, Workplace',
-                      'labor': 'Office, Business, Workplace', 'laborer': 'Office, Business, Workplace', 'laptop': 'Office, Business, Workplace',
-                      'lead': 'Office, Business, Workplace', 'lease': 'Office, Business, Workplace', 'leave': 'Office, Business, Workplace',
-                      'letterhead': 'Office, Business, Workplace', 'liability': 'Office, Business, Workplace', 'loan': 'Office, Business, Workplace',
-                      'loss': 'Office, Business, Workplace', 'low': 'Office, Business, Workplace', 'lucrative': 'Office, Business, Workplace',
-                      'mailbox': 'Office, Business, Workplace', 'mainframe': 'Office, Business, Workplace', 'manage': 'Office, Business, Workplace',
-                      'management': 'Office, Business, Workplace', 'manager': 'Office, Business, Workplace', 'market': 'Office, Business, Workplace',
-                      'marketing': 'Office, Business, Workplace', 'meeting': 'Office, Business, Workplace', 'memo': 'Office, Business, Workplace',
-                      'merchandise': 'Office, Business, Workplace', 'merchant': 'Office, Business, Workplace', 'money': 'Office, Business, Workplace',
-                      'monopoly': 'Office, Business, Workplace', 'motherboard': 'Office, Business, Workplace',
-                      'negotiate': 'Office, Business, Workplace', 'negotiation': 'Office, Business, Workplace', 'net': 'Office, Business, Workplace',
-                      'network': 'Office, Business, Workplace', 'niche': 'Office, Business, Workplace', 'notebook': 'Office, Business, Workplace',
-                      'notice': 'Office, Business, Workplace', 'occupation': 'Office, Business, Workplace', 'offer': 'Office, Business, Workplace',
-                      'office': 'Office, Business, Workplace', 'offline': 'Office, Business, Workplace', 'online': 'Office, Business, Workplace',
-                      'open': 'Office, Business, Workplace', 'opportunity': 'Office, Business, Workplace', 'order': 'Office, Business, Workplace',
-                      'organization': 'Office, Business, Workplace', 'outgoing': 'Office, Business, Workplace',
-                      'overdraft': 'Office, Business, Workplace', 'overhead': 'Office, Business, Workplace', 'owner': 'Office, Business, Workplace',
-                      'paperweight': 'Office, Business, Workplace', 'partner': 'Office, Business, Workplace',
-                      'password': 'Office, Business, Workplace', 'pay': 'Office, Business, Workplace', 'payment': 'Office, Business, Workplace',
-                      'perk': 'Office, Business, Workplace', 'personnel': 'Office, Business, Workplace', 'plan': 'Office, Business, Workplace',
-                      'policy': 'Office, Business, Workplace', 'portfolio': 'Office, Business, Workplace', 'position': 'Office, Business, Workplace',
-                      'presentation': 'Office, Business, Workplace', 'president': 'Office, Business, Workplace',
-                      'price': 'Office, Business, Workplace', 'principal': 'Office, Business, Workplace', 'product': 'Office, Business, Workplace',
-                      'production': 'Office, Business, Workplace', 'profit': 'Office, Business, Workplace',
-                      'profitable': 'Office, Business, Workplace', 'promotion': 'Office, Business, Workplace',
-                      'proposal': 'Office, Business, Workplace', 'prospects': 'Office, Business, Workplace', 'proxy': 'Office, Business, Workplace',
-                      'purchasing': 'Office, Business, Workplace', 'quarter': 'Office, Business, Workplace', 'quit': 'Office, Business, Workplace',
-                      'rank': 'Office, Business, Workplace', 'receipt': 'Office, Business, Workplace', 'recruit': 'Office, Business, Workplace',
-                      'recruiter': 'Office, Business, Workplace', 'refund': 'Office, Business, Workplace', 'resign': 'Office, Business, Workplace',
-                      'retail': 'Office, Business, Workplace', 'retailer': 'Office, Business, Workplace', 'retire': 'Office, Business, Workplace',
-                      'resume': 'Office, Business, Workplace', 'risk': 'Office, Business, Workplace', 'salary': 'Office, Business, Workplace',
-                      'sale': 'Office, Business, Workplace', 'salesman': 'Office, Business, Workplace', 'saleswoman': 'Office, Business, Workplace',
-                      'secretary': 'Office, Business, Workplace', 'sell': 'Office, Business, Workplace', 'seller': 'Office, Business, Workplace',
-                      'service': 'Office, Business, Workplace', 'shareholder': 'Office, Business, Workplace', 'ship': 'Office, Business, Workplace',
-                      'shipment': 'Office, Business, Workplace', 'shipping': 'Office, Business, Workplace', 'shop': 'Office, Business, Workplace',
-                      'sign': 'Office, Business, Workplace', 'signature': 'Office, Business, Workplace', 'spreadsheet': 'Office, Business, Workplace',
-                      'staff': 'Office, Business, Workplace', 'statement': 'Office, Business, Workplace', 'stock': 'Office, Business, Workplace',
-                      'stockholder': 'Office, Business, Workplace', 'strike': 'Office, Business, Workplace', 'success': 'Office, Business, Workplace',
-                      'superintendent': 'Office, Business, Workplace', 'supervisor': 'Office, Business, Workplace',
-                      'supply': 'Office, Business, Workplace', 'target': 'Office, Business, Workplace', 'tariff': 'Office, Business, Workplace',
-                      'tax': 'Office, Business, Workplace', 'temp': 'Office, Business, Workplace', 'terms': 'Office, Business, Workplace',
-                      'trade': 'Office, Business, Workplace', 'trainee': 'Office, Business, Workplace', 'transaction': 'Office, Business, Workplace',
-                      'treasurer': 'Office, Business, Workplace', 'treasury': 'Office, Business, Workplace', 'trend': 'Office, Business, Workplace',
-                      'typeface': 'Office, Business, Workplace', 'typewriter': 'Office, Business, Workplace',
-                      'unemployment': 'Office, Business, Workplace', 'union': 'Office, Business, Workplace', 'upgrade': 'Office, Business, Workplace',
-                      'upload': 'Office, Business, Workplace', 'username': 'Office, Business, Workplace', 'vacancy': 'Office, Business, Workplace',
-                      'venture': 'Office, Business, Workplace', 'volume': 'Office, Business, Workplace', 'warranty': 'Office, Business, Workplace',
-                      'wastebasket': 'Office, Business, Workplace', 'waybill': 'Office, Business, Workplace',
-                      'wholesale': 'Office, Business, Workplace', 'wholesaler': 'Office, Business, Workplace',
-                      'withdraw': 'Office, Business, Workplace', 'work': 'Office, Business, Workplace', 'worker': 'Office, Business, Workplace',
-                      'workroom': 'Office, Business, Workplace', 'workspace': 'Office, Business, Workplace', 'yield': 'Office, Business, Workplace',
-                      'ant': 'animals',	'bird': 'animals',	'cat': 'animals',	'chicken': 'animals',	'cow': 'animals',	'dog': 'animals',
-                      'elephant': 'animals',	'fish': 'animals',	'fox': 'animals',	'horse': 'animals',	'kangaroo': 'animals',	'lion': 'animals',
-                      'monkey': 'animals',	'penguin': 'animals',	'pig': 'animals',	'rabbit': 'animals',	'sheep': 'animals',
-                      'tiger': 'animals',	'whale': 'animals',	'wolf': 'animals'
-                      }
+hangman_dictionary = {
+    'analytics ': 'The scientific process of transforming data into insight for making better decisions. ',
+    'big data ': 'A set of data that cannot be managed, processed, or analyzed with commonly available software in a reasonable amount of time.',
+    'categorical data ': 'Labels or names used to identify an attribute of each element. Categorical data use either the nominal '
+                         'or ordinal scale of measurement and may be nonnumeric or numeric. ',
+    'categorical variable ': 'A variable with categorical data. ',
+    'census ': 'A survey to collect data on the entire population. ',
+    'cross-sectional data ': 'Data collected at the same or approximately the same point in time. ',
+    'data ': 'The facts and figures collected, analyzed, and summarized for presentation and interpretation. ',
+    'data set ': 'All the data collected in a particular study. ',
+    'descriptive statistics ': 'Tabular, graphical, and numerical summaries of data. ',
+    'elements ': 'The entities on which data are collected. ',
+    'interval scale ': ' The scale of measurement for a variable if the data demonstrate the properties of ordinal data and the '
+                       'interval between values is expressed in terms of a fixed unit of measure. Interval data are always numeric. ',
+    'nominal scale ': 'The scale of measurement for a variable when the data are labels or names used to identify an attribute of '
+                      'an element. Nominal data may be nonnumeric or numeric. ',
+    'observation ': 'The set of measurements obtained for a particular element. ',
+    'ordinal scale ': 'The scale of measurement for a variable if the data exhibit the properties of nominal data and the order or '
+                      'rank of the data is meaningful. Ordinal data may be nonnumeric or numeric. ',
+    'population ': 'The set of all elements of interest in a particular study. ',
+    'quantitative data ': 'Numeric values that indicate how much or how many of something. Quantitative data are obtained using'
+                          'either the interval or ratio scale of measurement. ',
+    'quantitative variable ': 'A variable with quantitative data. ',
+    'ratio scale ': 'The scale of measurement for a variable if the data demonstrate all the properties of interval data and the ratio '
+                    'of two values is meaningful. Ratio data are always numeric. ',
+    'sample ': 'A subset of the population. ',
+    'sample survey ': 'A survey to collect data on a sample. ',
+    'statistical inference ': 'The process of using data obtained from a sample to make estimates or test hypotheses about the '
+                              'characteristics of a population. ',
+    'statistics ': 'The art and science of collecting, analyzing, presenting, and interpreting data. ',
+    'time series data ': 'Data collected over several time periods. ',
+    'variable ': 'A characteristic of interest for the elements. ',
+    'time-series data ': 'Data are collected over several time periods. ',
+    'pooled data ': 'A mixture of time-series data and cross-sectional data. ',
+    'issue': ' A topic or subject to investigate ',
+    'question': ' Designed to discover information ',
+    'problem': ' An obstacle or complication that needs to be worked out ',
+    'business task': ' The question or problem data analysis answers for a business ',
+    'fairness': ' Ensuring that your analysis doesn’t create or reinforce bias ',
+    'analytical skills': ' Qualities and characteristics associated with using facts to solve problems ',
+    'analytical thinking': ' The process of identifying and defining a problem, then solving it by using data in an organized, step-by-step manner ',
+    'attribute': ' A characteristic or quality of data used to label a column in a table ',
+    'context': ' The condition in which something exists or happens ',
+    'data': ' A collection of facts ',
+    'data analysis': ' The collection, transformation, and organization of data in order to draw conclusions, make predictions,'
+                     'and drive informed decision-making ',
+    'data analyst': ' Someone who collects, transforms, and organizes data in order to draw conclusions, make predictions, '
+                    'and drive informed decision-making ',
+    'data analytics': ' The science of data ',
+    'data design': ' How information is organized ',
+    'data-driven decision-making': ' Using facts to guide business strategy ',
+    'data ecosystem': ' The various elements that interact with one another in order to produce, manage, store, organize, analyze, and share data ',
+    'data science': ' A field of study that uses raw data to create new ways of modeling and understanding the unknown ',
+    'data strategy': ' The management of the people, processes, and tools used in data analysis ',
+    'data visualization': ' The graphical representation of data ',
+    'database': ' A collection of data stored in a computer system ',
+    'dataset': ' A collection of data that can be manipulated or analyzed as one unit ',
+    'formula': ' A set of instructions used to perform a calculation using the data in a spreadsheet ',
+    'function': ' A preset command that automatically performs a process or task using the data in a spreadsheet ',
+    'gap analysis': ' A method for examining and evaluating the current state of a process in order to identify opportunities'
+                    'for improvement in the future ',
+    'observation': ' The attributes that describe a piece of data contained in a row of a table ',
+    'query': ' A request for data or information from a database ',
+    'query language': ' A computer programming language used to communicate with a database ',
+    'root cause': ' The reason why a problem occurs ',
+    'stakeholders': ' People who invest time and resources into a project and are interested in its outcome ',
+    'technical mindset': ' The ability to break things down into smaller steps or pieces and work with them in an orderly and logical way ',
+    'visualization': ' Refer to data visualization ',
+    
+}
 hangman_list = list(hangman_dictionary.keys())
 
 # the secret word
-hangman = random.choice(hangman_list)
+hangman = str(random.choice(hangman_list).lower())
 
 # input the hangman word in a list -> for each correct guess, remove the word from word to guess
 hangman_word = []
 for i in hangman:
     hangman_word.append(i)
 
-word_to_guess = set(hangman_word)
-
+letter_to_guess = []
+for x in hangman_word:
+    if x in alphabet_list:
+        letter_to_guess.append(x)
+word_to_guess = set(letter_to_guess)
 # game start -> print hint (eg. This word belongs to which topic)
 print(f'\nWELCOME TO THE HANGMAN GAME (((o(*ﾟ▽ﾟ*)o)))\nCAN YOU FIND THE WORD BEFORE THE HANGMAN HANGS '
       f'YOU?!\n----------------------------------------------------'
-      f'\nThis words belongs to the topic: {hangman_dictionary[hangman].upper()}')
+      f'\nThis words belongs to the topic: {hangman_dictionary[hangman]}')
 
-# visual: place to input word (how many word) --> eg. two => print _ _ _ => append _ _ _ into visual_board
+# visual: place to input word (how many word) --> eg. two => print _ _ _ => append _ _ _ into visual_board. If space -> visual space,
+# if '-' -> visual cross
+
 count_word = len(hangman)
-visual_empty = '_ '
-x = 0
-print(f"The word contain {count_word} letters")
-while x < count_word:
-    visual_board.append(visual_empty)
-    print(visual_empty, end='')
-    x += 1
+
+visual_board = []
+visual_word = '_ '
+visual_space = '/ '
+visual_cross = '-'
+for x in hangman:
+    if x == ' ':
+        visual_board.append(visual_space)
+        print(visual_space, end='')
+    elif x == '-':
+        visual_board.append(visual_cross)
+        print(visual_cross, end='')
+    else:
+        visual_board.append(visual_word)
+        print(visual_word, end='')
 
 while True:
     # criterial for game active -> human hasn't made 7 incorrect guesses
