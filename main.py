@@ -61,14 +61,14 @@ alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 # hangman words to guess
 
-sao_ke = pd.read_excel('hangman.xlsx')
+df = pd.read_excel('hangman.xlsx')
 row = 0
 hangman_dictionary = {}
 
-x = len(sao_ke)
+x = len(df)
 for i in range(0, x):
-    word = sao_ke.loc[row, 'word']
-    definition = sao_ke.loc[row, 'definition']
+    word = df.loc[row, 'word']
+    definition = df.loc[row, 'definition']
     row += 1
     hangman_dictionary[word[1:]] = definition  # [1:] to remove unicode char \xa0
 
